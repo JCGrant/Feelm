@@ -1,8 +1,13 @@
 import os
 from flask import Flask
+from cognitive_api import CognitiveApi
 
 app = Flask(__name__)
-app.config['COGNITIVE_URL'] = 'https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize'
-app.config['COGNITIVE_KEY'] = os.environ['COGNITIVE_KEY']
+
+cognitive_api = CognitiveApi({
+    'emotion': os.environ['COGNITIVE_EMOTION_API_KEY'],
+    'face': os.environ['COGNITIVE_FACE_API_KEY'],
+})
+
 
 from app import views

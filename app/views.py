@@ -1,5 +1,5 @@
 from flask import render_template, jsonify
-from app import app
+from app import app, cognitive_api
 import requests
 
 @app.route('/')
@@ -8,9 +8,5 @@ def home():
 
 @app.route('/process/<path:url>', methods=['POST'])
 def process(url):
-    api_url = app.config['COGNITIVE_URL']
-    api_key = app.config['COGNITIVE_KEY']
-    json = { 'url': url }
-    headers = { 'Ocp-Apim-Subscription-Key': api_key }
-    response = requests.post(api_url, json=json, headers=headers)
-    return jsonify(response.json())
+    emotion_json = cognitive_api.detect_emotions(url)
+    return jsonify(emotion_json)
