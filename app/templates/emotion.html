@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta character="utf-8">
+    <title>Feelm | {{emotion | capitalize}}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/reset.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/general.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/emotions/' + emotion + '.css')}}">
+  </head>
+
+  <body>
+    <div class="container">
+
+      <header>
+        <h1>Feelm</h1>
+        <p>Its not all about what you think, its all about what you feel</p>
+      </header>
+
+      <a href="{{url_for('home')}}"><- Home</a>
+      <h2>{{emotion | capitalize}}</h2>
+
+      <div class="movie-list">
+        <div class="movie-description">
+          <h3>Finding nemo</h3>
+          <p>Sweet father-son tale with some unexpexted moments</p>
+        </div>
+        <div class="movie-description">
+          <h3>Meet the parents</h3>
+          <p>Meeting your partner’s parents is bound to be stressful – but Greg Focker (Ben Stiller) has it worse than most.</p>
+        </div>
+        <div class="movie-description">
+          <h3>Safety Last!</h3>
+          <p>The idea of working in your shirt sleeves! Think of the shock to your customers, women of culture and refinement!</p>
+        </div>
+      </div>
+
+      {% include 'footer.html' %}
+
+    </div>
+  </body>
+</html>

@@ -1,9 +1,30 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
   <head>
+    <meta character="utf-8">
     <title>Feelm</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/reset.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/general.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
   </head>
+
   <body>
-    <h1>Feelm</h1>
+    <div class="container">
+
+      <header>
+        <h1>Feelm</h1>
+        <p>Its not all about what you think, its all about what you feel</p>
+      </header>
+
+      {% for emotion in emotions %}
+        <div class="emotion-section">
+          <a href="{{url_for('emotions', emotion=emotion)}}">{{emotion | capitalize}}</a>
+        </div>
+      {% endfor %}
+
+      {% include 'footer.html' %}
+
+    </div>
   </body>
 </html>
