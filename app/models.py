@@ -16,6 +16,9 @@ class Film(db.Model):
     def __init__(self, name):
         self.name = name
 
+    def __repr__(self):
+        return '<' + self.__class__.__name__ + ': ' + self.name + '>'
+
 
 class EmotionTimeFrame(db.Model):
     seconds = db.Column(db.Integer, primary_key=True)
@@ -28,3 +31,6 @@ class EmotionTimeFrame(db.Model):
     neutral = db.Column(db.Float)
     sadness = db.Column(db.Float)
     suprise = db.Column(db.Float)
+
+    def __repr__(self):
+        return '<' + self.__class__.__name__ + ': ' + self.film.name + ' - ' + self.seconds + '>'
