@@ -3,15 +3,19 @@ from app import db
 class Film(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True)
-    numViewingSessions = db.Column(db.Integer)
-    avgAnger = db.Column(db.Float)
-    avgContempt = db.Column(db.Float)
-    avgDisgust = db.Column(db.Float)
-    avgFear = db.Column(db.Float)
-    avgHappiness = db.Column(db.Float)
-    avgNeutral = db.Column(db.Float)
-    avgSadness = db.Column(db.Float)
-    avgSuprise = db.Column(db.Float)
+    numViewingSessions = db.Column(db.Integer, default=0)
+    avgAnger = db.Column(db.Float, default=0)
+    avgContempt = db.Column(db.Float, default=0)
+    avgDisgust = db.Column(db.Float, default=0)
+    avgFear = db.Column(db.Float, default=0)
+    avgHappiness = db.Column(db.Float, default=0)
+    avgNeutral = db.Column(db.Float, default=0)
+    avgSadness = db.Column(db.Float, default=0)
+    avgSuprise = db.Column(db.Float, default=0)
+
+    def __init__(self, name):
+        self.name = name
+
 
 class EmotionTimeFrame(db.Model):
     seconds = db.Column(db.Integer, primary_key=True)
