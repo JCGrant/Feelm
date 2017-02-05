@@ -22,7 +22,8 @@ class Film(db.Model):
 
 class EmotionTimeFrame(db.Model):
     seconds = db.Column(db.Integer, primary_key=True)
-    film = db.relationship('Film', backref='time_frames', lazy='dynamic')
+    film_id = db.Column(db.Integer, db.ForeignKey('film.id'))
+    film = db.relationship('Film', backref=db.backref('time_frames', lazy='dynamic'))
     anger = db.Column(db.Float)
     contempt = db.Column(db.Float)
     disgust = db.Column(db.Float)
