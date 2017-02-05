@@ -34,4 +34,4 @@ class EmotionTimeFrame(db.Model):
     suprise = db.Column(db.Float)
 
     def __repr__(self):
-        return '<' + self.__class__.__name__ + ': ' + self.film.name + ' - ' + self.seconds + '>'
+        return '<' + self.__class__.__name__ + ': ' + self.film.name + ' - ' + str(self.seconds) + '>'
